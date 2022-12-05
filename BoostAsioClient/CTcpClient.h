@@ -10,7 +10,7 @@
 class CTcpClient
 {
 public:
-	enum EState
+	enum class EState
 	{
 		eConnected,
 		eDiconnected
