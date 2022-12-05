@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Server">
+      <UniqueIdentifier>{67ab77a6-e5c0-43e4-963d-6490390c9dfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="User">
+      <UniqueIdentifier>{9d9b9ee1-1ab7-41f0-8e5d-4db6a332f0f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CTestServer.cpp">
+      <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="CTestUser.cpp">
+      <Filter>User</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PacketList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CTestServer.h">
+      <Filter>Server</Filter>
+    </ClInclude>
+    <ClInclude Include="CTestUser.h">
+      <Filter>User</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
