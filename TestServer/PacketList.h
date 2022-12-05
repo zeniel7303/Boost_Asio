@@ -40,5 +40,10 @@ int BigPacketTest(CPacketHeader* _header, unsigned short _size, std::shared_ptr<
 
 	printf("Packet Data : %d \n", testBigPacket->m_dataSize);
 
-	return 0;
+	auto sender = CSender::Alloc<CTestBigPacket>();
+	auto packet = sender->GetWritePointer<CTestBigPacket>();
+	packet->m_packetNum = 1;
+	strcpy(packet->m_bigData, testBigPacket->m_bigData);
+
+	return _user->Send(sender);
 }

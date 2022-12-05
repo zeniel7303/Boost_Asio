@@ -10,4 +10,4 @@
   CSession.cpp
   CTcpSocket.cpp
   코드를 생성하고 있습니다...
-  BoostAsioServer.vcxproj -> D:\c++ Boost\x64\Debug\BoostAsioServer.lib
+  BoostAsioServer.vcxproj -> D:\c++ BoostAsio\x64\Debug\BoostAsioServer.lib

@@ -1,5 +1,2 @@
 ﻿  CTestServer.cpp
-  CTestUser.cpp
-  main.cpp
-  코드를 생성하고 있습니다...
-  TestServer.vcxproj -> D:\c++ Boost\x64\Debug\TestServer.exe
+  TestServer.vcxproj -> D:\c++ BoostAsio\x64\Debug\TestServer.exe
