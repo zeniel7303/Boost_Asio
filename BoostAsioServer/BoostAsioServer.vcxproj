@@ -185,6 +185,7 @@
     <None Include="CGameServer.Inl" />
     <None Include="CHandler.Inl" />
     <None Include="CIOContext.Inl" />
+    <None Include="ClassDiagram.cd" />
     <None Include="CObjectPool.Inl" />
     <None Include="CSender.Inl" />
     <None Include="CSession.Inl" />

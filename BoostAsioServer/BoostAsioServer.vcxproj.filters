@@ -172,5 +172,6 @@
     <None Include="CTcpSocket.Inl">
       <Filter>Server\Network\Socket\Socket_TCP</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

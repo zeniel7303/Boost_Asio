@@ -23,7 +23,6 @@ public:
 int Echo(CPacketHeader* _header, unsigned short _size, std::shared_ptr<CGameUser>& _user)
 {
 	auto echoPacket = reinterpret_cast<CTestPacket*>(_header);
-	/*printf("Packet Data : %s / Packet Size : %d / Socket : %d \n", echoPacket->m_test, echoPacket->m_dataSize, _user->GetSocket());*/
 	printf("Packet Data : %s / Packet Size : %d \n", echoPacket->m_test, echoPacket->m_dataSize);
 
 	auto sender = CSender::Alloc<CTestPacket>();
@@ -37,8 +36,7 @@ int Echo(CPacketHeader* _header, unsigned short _size, std::shared_ptr<CGameUser
 int BigPacketTest(CPacketHeader* _header, unsigned short _size, std::shared_ptr<CGameUser>& _user)
 {
 	auto testBigPacket = reinterpret_cast<CTestBigPacket*>(_header);
-
-	printf("Packet Data : %d \n", testBigPacket->m_dataSize);
+	printf("Packet Data : %s / Packet Size : %d \n", testBigPacket->m_bigData, testBigPacket->m_dataSize);
 
 	auto sender = CSender::Alloc<CTestBigPacket>();
 	auto packet = sender->GetWritePointer<CTestBigPacket>();
