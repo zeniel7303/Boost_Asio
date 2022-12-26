@@ -163,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="CAcceptor.h" />
     <ClInclude Include="CBuffer.h" />
+    <ClInclude Include="CDoubleQueue.h" />
     <ClInclude Include="CFactory.h" />
     <ClInclude Include="CGameServer.h" />
     <ClInclude Include="CGameUser.h" />
@@ -176,11 +177,13 @@
     <ClInclude Include="CServerSetting.h" />
     <ClInclude Include="CSession.h" />
     <ClInclude Include="CSharedLock.h" />
+    <ClInclude Include="CSpinLock.h" />
     <ClInclude Include="CTcpSocket.h" />
     <ClInclude Include="ErrorDef.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CAcceptor.Inl" />
+    <None Include="CDoubleQueue.Inl" />
     <None Include="CFactory.Inl" />
     <None Include="CGameServer.Inl" />
     <None Include="CHandler.Inl" />

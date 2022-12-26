@@ -143,6 +143,12 @@
     <ClInclude Include="ErrorDef.h">
       <Filter>Server\Core</Filter>
     </ClInclude>
+    <ClInclude Include="CSpinLock.h">
+      <Filter>Utility\Lock</Filter>
+    </ClInclude>
+    <ClInclude Include="CDoubleQueue.h">
+      <Filter>Utility\Buffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="CSession.Inl">
@@ -173,5 +179,8 @@
       <Filter>Server\Network\Socket\Socket_TCP</Filter>
     </None>
     <None Include="ClassDiagram.cd" />
+    <None Include="CDoubleQueue.Inl">
+      <Filter>Utility\Buffer</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ CGameUser::CGameUser()
 	
 }
 
-void CGameUser::LinkSession(std::shared_ptr<CSession>& _session)
+void CGameUser::SetSession(std::shared_ptr<CSession>& _session)
 {
 	m_session = _session;
 }

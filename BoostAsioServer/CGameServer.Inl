@@ -11,14 +11,7 @@ CGameServer<T>::CGameServer(CServerSetting* _setting)
 	{
 		auto addressInfo = m_setting->GetAddress(i);
 
-		if (addressInfo.m_ip == nullptr)
-		{			
-			AddAcceptor(addressInfo.m_port);
-		}
-		else
-		{
-			AddAcceptor(addressInfo.m_ip, addressInfo.m_port);
-		}
+		AddAcceptor(addressInfo.m_ip, addressInfo.m_port);
 	}
 
 	CFactory::Instance().AddObejctPool<CSession>(m_setting->GetSessionCount());
@@ -92,15 +85,16 @@ template<typename T>
 void CGameServer<T>::AddAcceptor(const char* _ip, unsigned short _port)
 {
 	std::unique_ptr<CAcceptor> acceptor = std::make_unique<CAcceptor>();
-	acceptor->Bind(_ip, _port);
-	m_acceptorList.emplace_back(std::move(acceptor));
-}
 
-template<typename T>
-void CGameServer<T>::AddAcceptor(unsigned short _port)
-{
-	std::unique_ptr<CAcceptor> acceptor = std::make_unique<CAcceptor>();
-	acceptor->Bind(_port);
+	if (_ip == nullptr)
+	{
+		acceptor->Bind(_port);
+	}
+	else
+	{
+		acceptor->Bind(_ip, _port);
+	}
+
 	m_acceptorList.emplace_back(std::move(acceptor));
 }
 
@@ -110,7 +104,7 @@ int CGameServer<T>::SetAccept(CAcceptor* _acceptor)
 	auto session = CFactory::Instance().New<CSession>(&CSession::Delete);
 	if (session == nullptr)
 	{
-		//세션을 다 썼다.
+		//세션을 다 쓴 경우
 		SetAccept(_acceptor);
 
 		return false;
@@ -128,12 +122,12 @@ int CGameServer<T>::SetAccept(CAcceptor* _acceptor)
 	}
 
 	session->SetGameObject(gameUser);
-	gameUser->LinkSession(session);
+	gameUser->SetSession(session);
 	auto sessionPtr = session.get();
 
+	//https://github.com/jacking75/boost_asio_sample/blob/master/Document/asio_cpp11.md
 	_acceptor->AcceptAsync(*sessionPtr,
-		[this, session, _acceptor]
-	(const boost::system::error_code& _error) mutable
+		[this, session, _acceptor](const boost::system::error_code& _error) mutable
 	{
 		if (_error.value() != 0)
 		{

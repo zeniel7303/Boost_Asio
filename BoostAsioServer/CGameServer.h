@@ -24,13 +24,12 @@ public:
 	CGameServer(CServerSetting* _setting);
 	virtual ~CGameServer();
 
-	int Start();
+	virtual int Start();
 	int GetAcceptorCount();
 
 private:
 	void Main();
 	void AddAcceptor(const char* _ip, unsigned short _port);
-	void AddAcceptor(unsigned short _port);
 	int SetAccept(CAcceptor* _acceptor);
 };
 

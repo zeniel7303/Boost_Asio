@@ -7,6 +7,7 @@
 #include <boost/asio.hpp>
 #include <string>
 #include <vector>
+#include <queue>
 
 #include <assert.h>
 

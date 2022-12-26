@@ -10,7 +10,7 @@ public:
 	CGameUser();
 	virtual ~CGameUser() {}
 
-	void LinkSession(std::shared_ptr<CSession>& _session);
+	void SetSession(std::shared_ptr<CSession>& _session);
 	void Unlink();
 	virtual void OnAccept() {}
 	virtual void OnDisconnect() {}
