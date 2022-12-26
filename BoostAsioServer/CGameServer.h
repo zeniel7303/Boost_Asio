@@ -15,22 +15,30 @@ protected:
 
 private:
 	//acceptor는 유니크해도 괜찮을 것 같다.
-	std::vector<std::unique_ptr<CAcceptor>>		m_acceptorList;
-	std::vector<std::thread>					m_threadList;
+	std::vector<std::unique_ptr<CAcceptor>>				m_acceptorList;
+	std::vector<std::thread>							m_threadList;
 
-	int											m_threadCount;
+	int													m_threadCount;
+
+	/*HANDLE												m_hEvent[MAX_EVENT];
+	std::thread											m_mainThread;*/
 
 public:
 	CGameServer(CServerSetting* _setting);
 	virtual ~CGameServer();
 
-	virtual int Start();
+	int Start();
 	int GetAcceptorCount();
 
 private:
-	void Main();
+	//void Main();
+	void Loop();
 	void AddAcceptor(const char* _ip, unsigned short _port);
 	int SetAccept(CAcceptor* _acceptor);
+
+	/*using Process = void (CGameServer::*)();
+	Process processFunc[MAX_EVENT];
+	void ProcessPacket();*/
 };
 
 #include "CGameServer.Inl"

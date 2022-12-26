@@ -99,8 +99,16 @@ int CSession::OnReceive(unsigned short _size)
 	while (data != nullptr && gameUser != nullptr && result == 0 && size > 0)
 	{
 		CPacketHeader* header = reinterpret_cast<CPacketHeader*>(data);
+
 		result = CPacketHandler::Instance().
-			Process(header->m_packetNum, header, size, gameUser);
+			CanParse(header->m_packetNum, header, size, gameUser);
+		if (result != 0) break;
+
+		/*m_packetQueue.AddObject(std::make_pair(header, this));
+		SetEvent(m_hEvent[EVENT_RECV]);*/
+
+		/*result = CPacketHandler::Instance().
+			Process(header->m_packetNum, header, size, gameUser);*/
 
 		if (result != 0) break;
 

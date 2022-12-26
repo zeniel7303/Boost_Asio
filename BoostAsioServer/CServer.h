@@ -25,3 +25,9 @@ using boost::asio::ip::tcp;
 #define MAXLENGTH 1024
 
 #define SENDDATACHUNKSIZE 1024
+
+enum eHandle : int
+{
+	EVENT_RECV,
+	MAX_EVENT
+};

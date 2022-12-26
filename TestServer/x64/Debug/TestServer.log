@@ -1,4 +1,7 @@
 ﻿  CTestServer.cpp
+  CTestUser.cpp
   main.cpp
   코드를 생성하고 있습니다...
-  TestServer.vcxproj -> D:\c++ BoostAsio\x64\Debug\TestServer.exe
+main.obj : error LNK2005: "void * * m_hEvent" (?m_hEvent@@3PAPEAXA)이(가) CTestServer.obj에 이미 정의되어 있습니다.
+main.obj : error LNK2005: "class CDoubleQueue<struct std::pair<class CPacketHeader *,class CSession *> > m_packetQueue" (?m_packetQueue@@3V?$CDoubleQueue@U?$pair@PEAVCPacketHeader@@PEAVCSession@@@std@@@@A)이(가) CTestServer.obj에 이미 정의되어 있습니다.
+D:\c++ BoostAsio\x64\Debug\TestServer.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.

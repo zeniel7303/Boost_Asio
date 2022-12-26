@@ -20,7 +20,7 @@ public:
 	T& PopObejct();
 	bool IsEmpty();
 	std::queue<T>& GetPrimaryQueue();
-	std::queue<T>* GetSecondaryQueue();
+	std::queue<T>& GetSecondaryQueue();
 	int GetPrimaryQueueSize();
 	int GetSecondaryQueueSize();
 };

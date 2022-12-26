@@ -56,7 +56,7 @@ std::queue<T>& CDoubleQueue<T>::GetPrimaryQueue()
 }
 
 template<typename T>
-std::queue<T>* CDoubleQueue<T>::GetSecondaryQueue()
+std::queue<T>& CDoubleQueue<T>::GetSecondaryQueue()
 {
 	return *secondaryQueue;
 }

@@ -1,6 +1,8 @@
 #include "CTestServer.h"
 #include "CPacketHandler.h"
 
+#include "PacketList.h"
+
 CTestServer::CTestServer(CServerSetting* _setting) : CGameServer(_setting)
 {
 	CSender::Init(30000);
@@ -14,14 +16,4 @@ CTestServer::CTestServer(CServerSetting* _setting) : CGameServer(_setting)
 CTestServer::~CTestServer()
 {
 	printf("TestServer End \n");
-}
-
-int CTestServer::Start()
-{
-	CGameServer::Start();
-
-	while (1)
-	{
-
-	}
 }
