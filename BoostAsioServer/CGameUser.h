@@ -17,6 +17,7 @@ public:
 	void SetDisConnect(int _error = 0);
 	int Send(void* _buffer, int _size);
 	int Send(const std::shared_ptr<CSender>& _sender);
+	void Read(int _size);
 
 	std::string GetIPAddress();
 };

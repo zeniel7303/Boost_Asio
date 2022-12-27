@@ -4,7 +4,7 @@
 
 using clientHandleType = std::function<int(CPacketHeader*, unsigned short)>;
 
-class CClientPacketHandler : public CHandler<clientHandleType>
+class CClientPacketHandler : public CHandler<clientHandleType, unsigned short>
 {
 private:
 	static CClientPacketHandler m_singleton;

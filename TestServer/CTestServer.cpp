@@ -11,6 +11,8 @@ CTestServer::CTestServer(CServerSetting* _setting) : CGameServer(_setting)
 	CPacketHandler::Instance().Register(2, &BigPacketTest);
 
 	printf("TestServer Start \n");
+
+	Start();
 }
 
 CTestServer::~CTestServer()

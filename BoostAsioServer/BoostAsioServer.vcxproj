@@ -150,10 +150,12 @@
   <ItemGroup>
     <ClCompile Include="CAcceptor.cpp" />
     <ClCompile Include="CBuffer.cpp" />
+    <ClCompile Include="CEventHandler.cpp" />
     <ClCompile Include="CFactory.cpp" />
     <ClCompile Include="CGameUser.cpp" />
     <ClCompile Include="CIOContext.cpp" />
     <ClCompile Include="CPacketHandler.cpp" />
+    <ClCompile Include="CRingBuffer.cpp" />
     <ClCompile Include="CSender.cpp" />
     <ClCompile Include="CSendPool.cpp" />
     <ClCompile Include="CServerSetting.cpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="CIOContext.h" />
     <ClInclude Include="CObjectPool.h" />
     <ClInclude Include="CPacketHandler.h" />
+    <ClInclude Include="CRingBuffer.h" />
     <ClInclude Include="CSender.h" />
     <ClInclude Include="CSendPool.h" />
     <ClInclude Include="CServer.h" />
@@ -180,6 +183,7 @@
     <ClInclude Include="CSpinLock.h" />
     <ClInclude Include="CTcpSocket.h" />
     <ClInclude Include="ErrorDef.h" />
+    <ClInclude Include="CEventHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CAcceptor.Inl" />

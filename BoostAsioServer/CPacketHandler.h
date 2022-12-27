@@ -5,7 +5,7 @@ class CGameUser;
 
 using handleType = std::function<int(CPacketHeader*, unsigned short, std::shared_ptr<CGameUser>&)>;
 
-class CPacketHandler : public CHandler<handleType>
+class CPacketHandler : public CHandler<handleType, std::shared_ptr<CGameUser>>
 {
 private:
 	static CPacketHandler m_singleton;

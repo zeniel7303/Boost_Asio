@@ -10,7 +10,6 @@ int main()
     setting.AddAddress(30001);
 
     CTestServer testServer(&setting);
-    testServer.Start();
 
     return 0;
 }

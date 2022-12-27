@@ -3,6 +3,8 @@
 template<typename T>
 CDoubleQueue<T>::CDoubleQueue()
 {
+	primaryQueue = &queue_1;
+	secondaryQueue = &queue_2;
 }
 
 template<typename T>

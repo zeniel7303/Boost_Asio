@@ -18,7 +18,7 @@ CGameServer<T>::CGameServer(CServerSetting* _setting)
 	CFactory::Instance().AddObejctPool<T>(m_setting->GetSessionCount());
 	CFactory::Instance().Init();
 
-	//processFunc[0] = &CGameServer::ProcessPacket;
+	processFunc[0] = &CGameServer::ProcessPacket;
 }
 
 template<typename T>
@@ -56,13 +56,13 @@ int CGameServer<T>::Start()
 			std::thread{ std::bind(&CGameServer::Loop, this) });
 	}
 
+	m_mainThread = std::thread{ std::bind(&CGameServer::Main, this) };
+	m_mainThread.detach();
+
 	for (auto& aThread : m_threadList)
 	{
 		aThread.join();
 	}
-
-	//m_mainThread = std::thread{ std::bind(&CGameServer::Main, this) };
-	//m_mainThread.join();
 
 	return 0;
 }
@@ -73,16 +73,16 @@ int CGameServer<T>::GetAcceptorCount()
 	return m_acceptorList.size();
 }
 
-//template<typename T>
-//void CGameServer<T>::Main()
-//{
-//	while (1)
-//	{
-//		int num = WaitForMultipleObjects(MAX_EVENT, m_hEvent, FALSE, INFINITE);
-//
-//		(this->*processFunc[num])();
-//	}
-//}
+template<typename T>
+void CGameServer<T>::Main()
+{
+	while (1)
+	{
+		int num = WaitForMultipleObjects(MAX_EVENT, CEventHandler::Instance().GetEventHandle(), FALSE, INFINITE);
+
+		(this->*processFunc[num])();
+	}
+}
 
 template<typename T>
 void CGameServer<T>::Loop()
@@ -171,26 +171,28 @@ int CGameServer<T>::SetAccept(CAcceptor* _acceptor)
 	return 0;
 }
 
-/*template<typename T>
+template<typename T>
 void CGameServer<T>::ProcessPacket()
 {
-	m_packetQueue.Swap();
+	CPacketHandler::Instance().m_packetQueue.Swap();
 
-	std::queue<std::pair<CPacketHeader*, CSession*>>& packetQueue 
-		= m_packetQueue.GetSecondaryQueue();
+	std::queue<std::tuple<CPacketHeader*, std::shared_ptr<CGameUser>>>& packetQueue
+		= CPacketHandler::Instance().m_packetQueue.GetSecondaryQueue();
 
 	size_t size = packetQueue.size();
 
 	for (int i = 0; i < size; i++)
 	{
-		const std::pair<CPacketHeader*, CSession*>& pair = packetQueue.front();
+		const std::tuple<CPacketHeader*, std::shared_ptr<CGameUser>>& tuple = packetQueue.front();
 
-		//int result = CPacketHandler::Instance().Process(
-		//	pair.first->m_packetNum,
-		//	pair.first,
-		//	pair.first->m_dataSize,
-		//	pair.second);
+		int result = CPacketHandler::Instance().Process(
+			std::get<0>(tuple)->m_packetNum,
+			std::get<0>(tuple),
+			std::get<0>(tuple)->m_dataSize,
+			std::get<1>(tuple));
+
+		std::get<1>(tuple)->Read(std::get<0>(tuple)->m_dataSize);
 
 		packetQueue.pop();
 	}
-}*/
+}

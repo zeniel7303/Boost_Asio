@@ -5,6 +5,8 @@
 #include "CServerSetting.h"
 #include "CSender.h"
 
+#include "CEventHandler.h"
+
 #include <thread>
 
 template<typename T>
@@ -20,8 +22,9 @@ private:
 
 	int													m_threadCount;
 
-	/*HANDLE												m_hEvent[MAX_EVENT];
-	std::thread											m_mainThread;*/
+	std::thread											m_mainThread;
+
+	CEventHandler										m_eventHandler;
 
 public:
 	CGameServer(CServerSetting* _setting);
@@ -31,14 +34,14 @@ public:
 	int GetAcceptorCount();
 
 private:
-	//void Main();
+	void Main();
 	void Loop();
 	void AddAcceptor(const char* _ip, unsigned short _port);
 	int SetAccept(CAcceptor* _acceptor);
 
-	/*using Process = void (CGameServer::*)();
+	using Process = void (CGameServer::*)();
 	Process processFunc[MAX_EVENT];
-	void ProcessPacket();*/
+	void ProcessPacket();
 };
 
 #include "CGameServer.Inl"

@@ -57,3 +57,12 @@ std::string CGameUser::GetIPAddress()
 
 	return std::string("");
 }
+
+void CGameUser::Read(int _size)
+{
+	auto shared = m_session.lock();
+	if (shared != nullptr)
+	{
+		shared->GetRingBuffer().Read(_size);
+	}
+}

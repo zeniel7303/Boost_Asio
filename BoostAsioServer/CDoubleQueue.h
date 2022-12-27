@@ -6,6 +6,9 @@ template<typename T>
 class CDoubleQueue
 {
 private:
+	std::queue<T>	queue_1;
+	std::queue<T>	queue_2;
+
 	std::queue<T>*	primaryQueue;
 	std::queue<T>*	secondaryQueue;
 

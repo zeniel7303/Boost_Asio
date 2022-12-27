@@ -2,10 +2,11 @@
 
 #include "PacketList.h"
 
-CTcpClient::CTcpClient() : m_socket(), m_buffer(8192),
-m_state(EState::eDiconnected), m_errorCode(0)
+CTcpClient::CTcpClient() : m_socket()
+, m_ringBuffer(10000, 3000), m_state(EState::eDiconnected), m_errorCode(0)
+//, m_buffer(8192), m_state(EState::eDiconnected), m_errorCode(0)
 {
-	m_buffer.Clear();
+	//m_buffer.Clear();
 
 	CSender::Init(30000);
 
@@ -13,10 +14,11 @@ m_state(EState::eDiconnected), m_errorCode(0)
 	CClientPacketHandler::Instance().Register(2, &BigPacketTest);
 }
 
-CTcpClient::CTcpClient(unsigned short _bufSize) : m_socket(), m_buffer(_bufSize),
-m_state(EState::eDiconnected), m_errorCode(0)
+CTcpClient::CTcpClient(unsigned short _bufSize) : m_socket()
+, m_ringBuffer(_bufSize, 3000), m_state(EState::eDiconnected), m_errorCode(0)
+//, m_buffer(_bufSize), m_state(EState::eDiconnected), m_errorCode(0)
 {
-	m_buffer.Clear();
+	//m_buffer.Clear();
 }
 
 CTcpClient::~CTcpClient()
@@ -36,10 +38,12 @@ int CTcpClient::Connect(const char* _ip, unsigned short _port)
 
 int CTcpClient::Receive(bool _isRecvFull)
 {
-	unsigned short size = m_buffer.GetUsableSize();
+	unsigned short size = m_ringBuffer.GetWriteableSize();
+	//unsigned short size = m_buffer.GetUsableSize();
 
 	// ¹öÆÛ°¡ °¡µæÃ¡À½. ¿¬°á ²÷¾î¾ßÇÔ.
-	if (size < 0 || m_buffer.GetBufferSize() < size)
+	if (size < 0 || m_ringBuffer.GetBufferSize() < size)
+	//if (size < 0 || m_buffer.GetBufferSize() < size)
 	{
 		SetDisconnect(E_BUFFER_FULL);
 		return E_BUFFER_FULL;
@@ -48,7 +52,8 @@ int CTcpClient::Receive(bool _isRecvFull)
 	if (_isRecvFull) size = 0;
 
 	int receivedDataSize = 0;
-	char* writePtr = m_buffer.GetWritePoint();
+	char* writePtr = m_ringBuffer.GetWritePoint();
+	//char* writePtr = m_buffer.GetWritePoint();
 	int errorCode = m_socket.Receive(writePtr, size, receivedDataSize);
 	if (errorCode != 0)
 	{
@@ -62,11 +67,11 @@ int CTcpClient::Receive(bool _isRecvFull)
 		return E_INVALID_PACKET;
 	}
 
-	if (!m_buffer.OnPush(static_cast<unsigned short>(receivedDataSize)))
+	/*if (!m_buffer.OnPush(static_cast<unsigned short>(receivedDataSize)))
 	{
 		SetDisconnect(E_BUFFER_FULL);
 		return E_BUFFER_FULL;
-	}
+	}*/
 
 	return 0;
 }
@@ -74,6 +79,28 @@ int CTcpClient::Receive(bool _isRecvFull)
 int CTcpClient::ProcessPacket()
 {
 	if (m_state == EState::eDiconnected)
+	{
+		return E_DISCONNECTED;
+	}
+
+	unsigned short size = 0;
+	int result = 0;
+
+	while (result == 0 && size > 0)
+	{
+		char* data = m_ringBuffer.CanParsing();
+		if (data == nullptr) break;
+
+		CPacketHeader* header = reinterpret_cast<CPacketHeader*>(data);
+		result = CClientPacketHandler::Instance().Process(header->m_packetNum, header, size);
+		if (result != 0)
+			break;
+	}
+
+	if (result != 0)
+		return result;
+
+	/*if (m_state == EState::eDiconnected)
 	{
 		return E_DISCONNECTED;
 	}
@@ -95,7 +122,7 @@ int CTcpClient::ProcessPacket()
 	if (result != 0)
 		return result;
 
-	m_buffer.Pop();
+	m_buffer.Pop();*/
 	return 0;
 }
 

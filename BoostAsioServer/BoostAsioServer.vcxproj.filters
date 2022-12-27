@@ -90,6 +90,12 @@
     <ClCompile Include="CServerSetting.cpp">
       <Filter>Server\Core\Setting</Filter>
     </ClCompile>
+    <ClCompile Include="CEventHandler.cpp">
+      <Filter>Server\Core\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="CRingBuffer.cpp">
+      <Filter>Utility\Buffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSession.h">
@@ -147,6 +153,12 @@
       <Filter>Utility\Lock</Filter>
     </ClInclude>
     <ClInclude Include="CDoubleQueue.h">
+      <Filter>Utility\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="CEventHandler.h">
+      <Filter>Server\Core\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="CRingBuffer.h">
       <Filter>Utility\Buffer</Filter>
     </ClInclude>
   </ItemGroup>

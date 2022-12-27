@@ -2,6 +2,7 @@
 #include "Stdafx.h"
 
 #include "CTcpSocket.h"
+#include "CRingBuffer.h"
 #include "CBuffer.h"
 #include "CSender.h"
 #include "CClientPacketHandler.h"
@@ -33,7 +34,8 @@ public:
 protected:
 	CTcpSocket	m_socket;
 	EState		m_state;
-	CBuffer		m_buffer;
+	CRingBuffer		m_ringBuffer;
+	//CBuffer		m_buffer;
 	int			m_errorCode;
 };
 

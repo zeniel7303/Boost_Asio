@@ -1,6 +1,7 @@
 #pragma once
 #include "CServer.h"
 #include "CTcpSocket.h"
+#include "CRingBuffer.h"
 #include "CBuffer.h"
 #include "CSharedLock.h"
 
@@ -30,7 +31,8 @@ private:
 	std::shared_ptr<CSession> m_instance;
 	std::shared_ptr<CGameUser> m_gameUser;
 
-	CBuffer			m_buffer;
+	//CBuffer			m_buffer;
+	CRingBuffer		m_ringBuffer;
 
 public :
 	CSession();
@@ -63,6 +65,7 @@ public :
 	std::shared_ptr<T> GetGameUserImpl(std::true_type);
 	template<typename T>
 	std::shared_ptr<T> GetGameUserImpl(std::false_type);
+	CRingBuffer& GetRingBuffer();
 };
 
 #include "CSession.Inl"

@@ -1,1 +1,6 @@
 ﻿  CClientPacketHandler.cpp
+  CTcpClient.cpp
+D:\c++ BoostAsio\BoostAsioClient\CTcpClient.cpp(41,22): warning C4244: '초기화 중': 'DWORD'에서 'unsigned short'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  main.cpp
+  코드를 생성하고 있습니다...
+  BoostAsioClient.vcxproj -> D:\c++ BoostAsio\x64\Debug\BoostAsioClient.exe
