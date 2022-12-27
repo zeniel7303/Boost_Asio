@@ -1,7 +1,6 @@
 #pragma once
 #include "CServer.h"
 #include "CSendPool.h"
-#include "CBuffer.h"
 #include "CPacketHandler.h"
 
 //패킷 전송시 사용

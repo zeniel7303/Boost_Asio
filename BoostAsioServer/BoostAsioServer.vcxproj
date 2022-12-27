@@ -149,7 +149,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CAcceptor.cpp" />
-    <ClCompile Include="CBuffer.cpp" />
     <ClCompile Include="CEventHandler.cpp" />
     <ClCompile Include="CFactory.cpp" />
     <ClCompile Include="CGameUser.cpp" />
@@ -164,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAcceptor.h" />
-    <ClInclude Include="CBuffer.h" />
     <ClInclude Include="CDoubleQueue.h" />
     <ClInclude Include="CFactory.h" />
     <ClInclude Include="CGameServer.h" />

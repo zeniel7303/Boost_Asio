@@ -75,9 +75,6 @@
     <ClCompile Include="CSendPool.cpp">
       <Filter>Server\Network\Session\Send</Filter>
     </ClCompile>
-    <ClCompile Include="CBuffer.cpp">
-      <Filter>Utility\Buffer</Filter>
-    </ClCompile>
     <ClCompile Include="CIOContext.cpp">
       <Filter>Server\Network\IO</Filter>
     </ClCompile>
@@ -90,11 +87,11 @@
     <ClCompile Include="CServerSetting.cpp">
       <Filter>Server\Core\Setting</Filter>
     </ClCompile>
-    <ClCompile Include="CEventHandler.cpp">
-      <Filter>Server\Core\Setting</Filter>
-    </ClCompile>
     <ClCompile Include="CRingBuffer.cpp">
       <Filter>Utility\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="CEventHandler.cpp">
+      <Filter>Server\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +125,6 @@
     <ClInclude Include="CServer.h">
       <Filter>Server\Core</Filter>
     </ClInclude>
-    <ClInclude Include="CBuffer.h">
-      <Filter>Utility\Buffer</Filter>
-    </ClInclude>
     <ClInclude Include="CIOContext.h">
       <Filter>Server\Network\IO</Filter>
     </ClInclude>
@@ -155,11 +149,11 @@
     <ClInclude Include="CDoubleQueue.h">
       <Filter>Utility\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="CEventHandler.h">
-      <Filter>Server\Core\Setting</Filter>
-    </ClInclude>
     <ClInclude Include="CRingBuffer.h">
       <Filter>Utility\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="CEventHandler.h">
+      <Filter>Server\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

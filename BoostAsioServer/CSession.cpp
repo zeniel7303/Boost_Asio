@@ -6,7 +6,6 @@
 
 CSession::CSession() : m_socket(), 
 m_ringBuffer(10000, 3000), m_state(EState::eClosed), m_errorCode(0)
-//m_buffer(8192), m_state(EState::eClosed), m_errorCode(0)
 {
 
 }
@@ -18,8 +17,6 @@ CSession::~CSession()
 
 int CSession::Init()
 {
-	//m_buffer.Clear();
-
 	return 0;
 }
 
@@ -28,7 +25,6 @@ int CSession::OnAccept()
 	assert(m_state == EState::eClosed && "state error");
 	assert(m_gameUser != nullptr && "gameUser error");
 
-	//m_buffer.Clear();
 	m_state = EState::eIdle;
 	m_gameUser->OnAccept();
 	m_socket.SetReuse(true);
@@ -43,8 +39,6 @@ int CSession::Receive()
 
 	unsigned short size = m_ringBuffer.GetWriteableSize();
 	char* writePtr = m_ringBuffer.GetWritePoint();
-	//unsigned short size = m_buffer.GetUsableSize();
-	//char* writePtr = m_buffer.GetWritePoint();
 
 	if (m_state != EState::eIdle)
 	{
@@ -55,7 +49,6 @@ int CSession::Receive()
 
 	// 버퍼가 가득찼음. 연결 끊어야함.
 	if (size < 0 || m_ringBuffer.GetBufferSize() < size)
-	//if (size < 0 || m_buffer.GetBufferSize() < size)
 	{
 		SetDisconnect(E_BUFFER_FULL);
 		return E_BUFFER_FULL;
@@ -109,46 +102,12 @@ int CSession::OnReceive(unsigned short _size)
 		if (result != 0) break;
 
 		CPacketHandler::Instance().Parsing(std::make_tuple(header, gameUser));
-		//m_ringBuffer.Read(header->m_dataSize);
 	}
 
 	if (result != 0) return result;
 
 	return 0;
 }
-
-/*int CSession::OnReceive(unsigned short _size)
-{
-	assert(m_state == EState::eIdle && "state error");
-
-	// 사이즈 에러
-	if (_size == 0) return E_INVALID_SIZE;
-
-	if (m_state != EState::eIdle) return E_NOT_IDLE;
-
-	if (!m_buffer.OnPush(_size)) return E_BUFFER_FULL;
-
-	unsigned short size = 0;
-	int result = 0;
-	char* data = m_buffer.Front(size, result);
-	auto gameUser = GetGameUser<CGameUser>();
-
-	while (data != nullptr && gameUser != nullptr && result == 0 && size > 0)
-	{
-		CPacketHeader* header = reinterpret_cast<CPacketHeader*>(data);
-		result = CPacketHandler::Instance().
-			Process(header->m_packetNum, header, size, gameUser);
-
-		if (result != 0) break;
-
-		data = m_buffer.Front(size, result);
-	}
-
-	if (result != 0) return result;
-
-	m_buffer.Pop();
-	return 0;
-}*/
 
 int CSession::Send(void* _buffer, int _size)
 {
@@ -206,7 +165,6 @@ int CSession::Close()
 
 		m_state = EState::eClosed;
 		m_ringBuffer.Reset();
-		//m_buffer.Clear();
 	}
 
 	return 0;

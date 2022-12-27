@@ -130,7 +130,7 @@ char* CRingBuffer::Parsing()
 		m_parsingPoint = m_bufferStartPoint;
 	}
 
-	WORD packetSize = GetPacketSize();
+	unsigned short packetSize = GetPacketSize();
 
 	//패킷 사이즈가 남아있는 크기보다 크다. -> 끝이 짤렸다.
 	if (packetSize > remainedSize)
@@ -150,14 +150,14 @@ char* CRingBuffer::Parsing()
 	return parsingData;
 }
 
-DWORD CRingBuffer::GetWriteableSize()
+unsigned short CRingBuffer::GetWriteableSize()
 {
-	DWORD size;
+	unsigned short size;
 
 	//평범한 경우
 	if (m_readPoint < m_writePoint)
 	{
-		size = (DWORD)(m_bufferEndPoint - m_writePoint);
+		size = (unsigned short)(m_bufferEndPoint - m_writePoint);
 	}
 	else if (m_readPoint == m_writePoint)
 	{
@@ -171,34 +171,34 @@ DWORD CRingBuffer::GetWriteableSize()
 		//데이터가 없는 경우 == ringBuffer가 데이터를 받는 시점이거나 처리할게 없음(문제X)
 		else
 		{
-			size = (DWORD)(m_bufferEndPoint - m_writePoint);
+			size = (unsigned short)(m_bufferEndPoint - m_writePoint);
 		}
 	}
 	else
 	{
-		size = (DWORD)(m_readPoint - m_writePoint);
+		size = (unsigned short)(m_readPoint - m_writePoint);
 	}
 
 	return size;
 }
 
-DWORD CRingBuffer::GetDataInBuffer()
+unsigned short CRingBuffer::GetDataInBuffer()
 {
-	DWORD size;
+	unsigned short size;
 
 	if (m_parsingPoint > m_writePoint)
 	{
-		size = (DWORD)(m_bufferEndPoint - m_parsingPoint + (m_writePoint - m_bufferStartPoint));
+		size = (unsigned short)(m_bufferEndPoint - m_parsingPoint + (m_writePoint - m_bufferStartPoint));
 	}
 	else
 	{
-		size = (DWORD)(m_writePoint - m_parsingPoint);
+		size = (unsigned short)(m_writePoint - m_parsingPoint);
 	}
 
 	return size;
 }
 
-WORD CRingBuffer::GetPacketSize()
+unsigned short CRingBuffer::GetPacketSize()
 {
-	return *(WORD*)(m_parsingPoint + 2);
+	return *(unsigned short*)(m_parsingPoint + 2);
 }

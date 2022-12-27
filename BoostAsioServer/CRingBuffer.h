@@ -40,11 +40,11 @@ public:
 	char* Parsing();
 
 	//쓸 수 있는, 읽을 수 있는 버퍼의 크기 계산
-	DWORD GetWriteableSize();
+	unsigned short GetWriteableSize();
 	//링버퍼 안에 있는 데이터의 총 크기
-	DWORD GetDataInBuffer();
+	unsigned short GetDataInBuffer();
 	//패킷 사이즈 
-	WORD GetPacketSize();
+	unsigned short GetPacketSize();
 
 	char* GetWritePoint() { return m_writePoint; }
 	char* GetReadPoint() { return m_readPoint; }

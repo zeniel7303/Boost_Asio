@@ -2,7 +2,6 @@
 #include "CServer.h"
 #include "CTcpSocket.h"
 #include "CRingBuffer.h"
-#include "CBuffer.h"
 #include "CSharedLock.h"
 
 class CSender;
@@ -31,7 +30,6 @@ private:
 	std::shared_ptr<CSession> m_instance;
 	std::shared_ptr<CGameUser> m_gameUser;
 
-	//CBuffer			m_buffer;
 	CRingBuffer		m_ringBuffer;
 
 public :

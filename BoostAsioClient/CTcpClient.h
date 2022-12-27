@@ -3,7 +3,6 @@
 
 #include "CTcpSocket.h"
 #include "CRingBuffer.h"
-#include "CBuffer.h"
 #include "CSender.h"
 #include "CClientPacketHandler.h"
 
@@ -35,7 +34,6 @@ protected:
 	CTcpSocket	m_socket;
 	EState		m_state;
 	CRingBuffer		m_ringBuffer;
-	//CBuffer		m_buffer;
 	int			m_errorCode;
 };
 

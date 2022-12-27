@@ -4,10 +4,7 @@
 
 CTcpClient::CTcpClient() : m_socket()
 , m_ringBuffer(10000, 3000), m_state(EState::eDiconnected), m_errorCode(0)
-//, m_buffer(8192), m_state(EState::eDiconnected), m_errorCode(0)
 {
-	//m_buffer.Clear();
-
 	CSender::Init(30000);
 
 	CClientPacketHandler::Instance().Register(1, &Echo);
@@ -16,9 +13,8 @@ CTcpClient::CTcpClient() : m_socket()
 
 CTcpClient::CTcpClient(unsigned short _bufSize) : m_socket()
 , m_ringBuffer(_bufSize, 3000), m_state(EState::eDiconnected), m_errorCode(0)
-//, m_buffer(_bufSize), m_state(EState::eDiconnected), m_errorCode(0)
 {
-	//m_buffer.Clear();
+
 }
 
 CTcpClient::~CTcpClient()
@@ -39,21 +35,11 @@ int CTcpClient::Connect(const char* _ip, unsigned short _port)
 int CTcpClient::Receive(bool _isRecvFull)
 {
 	unsigned short size = m_ringBuffer.GetWriteableSize();
-	//unsigned short size = m_buffer.GetUsableSize();
-
-	// ¹öÆÛ°¡ °¡µæÃ¡À½. ¿¬°á ²÷¾î¾ßÇÔ.
-	if (size < 0 || m_ringBuffer.GetBufferSize() < size)
-	//if (size < 0 || m_buffer.GetBufferSize() < size)
-	{
-		SetDisconnect(E_BUFFER_FULL);
-		return E_BUFFER_FULL;
-	}
 
 	if (_isRecvFull) size = 0;
 
 	int receivedDataSize = 0;
 	char* writePtr = m_ringBuffer.GetWritePoint();
-	//char* writePtr = m_buffer.GetWritePoint();
 	int errorCode = m_socket.Receive(writePtr, size, receivedDataSize);
 	if (errorCode != 0)
 	{
@@ -66,12 +52,6 @@ int CTcpClient::Receive(bool _isRecvFull)
 		SetDisconnect(E_INVALID_PACKET);
 		return E_INVALID_PACKET;
 	}
-
-	/*if (!m_buffer.OnPush(static_cast<unsigned short>(receivedDataSize)))
-	{
-		SetDisconnect(E_BUFFER_FULL);
-		return E_BUFFER_FULL;
-	}*/
 
 	return 0;
 }
@@ -100,29 +80,6 @@ int CTcpClient::ProcessPacket()
 	if (result != 0)
 		return result;
 
-	/*if (m_state == EState::eDiconnected)
-	{
-		return E_DISCONNECTED;
-	}
-
-	unsigned short size = 0;
-	int result = 0;
-	char* data = m_buffer.Front(size, result);
-
-	while (data != nullptr && result == 0 && size > 0)
-	{
-		CPacketHeader* header = reinterpret_cast<CPacketHeader*>(data);
-		result = CClientPacketHandler::Instance().Process(header->m_packetNum, header, size);
-		if (result != 0)
-			break;
-
-		data = m_buffer.Front(size, result);
-	}
-
-	if (result != 0)
-		return result;
-
-	m_buffer.Pop();*/
 	return 0;
 }
 
