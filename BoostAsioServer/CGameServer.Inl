@@ -78,9 +78,19 @@ void CGameServer<T>::Main()
 {
 	while (1)
 	{
+		//clock_t start, finish;
+		//double duration;
+
 		int num = WaitForMultipleObjects(MAX_EVENT, CEventHandler::Instance().GetEventHandle(), FALSE, INFINITE);
 
+		//start = clock();
+
 		(this->*processFunc[num])();
+
+		//finish = clock();
+
+		//duration = (double)(finish - start) / CLOCKS_PER_SEC;
+		//printf("%f seconds \n", duration);
 	}
 }
 

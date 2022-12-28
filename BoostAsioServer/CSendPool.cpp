@@ -59,15 +59,15 @@ std::shared_ptr<CSender> CSendPool::Alloc(unsigned short _sendSize)
 		sender = &(m_senderList[index]);
 		sendChunk = &(m_chunk[index]);
 
-		for (int i = 0; i < (index + count); ++i)
+		for (int i = index; i < (index + count); ++i)
 		{
 			m_flag[i] = true;
 		}
 
 		m_useSize += (count * sizeof(CDataChunk));
-
-		sender->SetSendDataChunk(sendChunk, index, count);
 	}
+
+	sender->SetSendDataChunk(sendChunk, index, count);
 
 	//c++ shared_ptr delete lambda
 	//https://stackoverflow.com/questions/13633737/using-a-custom-deleter-for-stdshared-ptr-on-a-direct3d11-object
@@ -109,17 +109,24 @@ int CSendPool::GetIndex(unsigned short _count)
 	{
 		if (!flag)
 		{
-			allocIndex = flagIndex;
-
 			++filledCount;
 
+			if (allocIndex == -1)
+				allocIndex = flagIndex;
+
 			if (filledCount == _count) break;
+		}
+		else
+		{
+			filledCount = 0;
+			allocIndex = -1;
 		}
 
 		++flagIndex;
 	}
 
-	if (filledCount != _count) allocIndex = -1;
+	if (allocIndex != -1 && filledCount != _count) 
+		allocIndex = -1;
 
 	return allocIndex;
 }
