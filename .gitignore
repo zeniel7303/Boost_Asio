@@ -27,6 +27,7 @@ ExportedObj/
 *.recipe
 *.obj
 *.idb
+*.lib
 
 # Unity3D generated meta files
 *.pidb.meta
