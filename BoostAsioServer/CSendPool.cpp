@@ -44,6 +44,7 @@ int CSendPool::Init(unsigned short _count)
 std::shared_ptr<CSender> CSendPool::Alloc(unsigned short _sendSize)
 {
 	int index = 0;
+	//패킷 크기만큼의 데이터 청크 갯수 지정
 	unsigned short count = (_sendSize / sizeof(CDataChunk)) + 1;
 
 	CSender* sender = nullptr;
@@ -52,6 +53,7 @@ std::shared_ptr<CSender> CSendPool::Alloc(unsigned short _sendSize)
 	{
 		WriteLock writeLock(*this);
 
+		//SendPool의 몇번째 데이터 청크부터 비어있는지 체크
 		index = GetIndex(count);
 
 		if (index == -1) return nullptr;

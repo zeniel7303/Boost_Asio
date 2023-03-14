@@ -12,6 +12,7 @@ CTestServer::CTestServer(CServerSetting* _setting) : CGameServer(_setting)
 
 	printf("TestServer Start \n");
 
+	
 	Start();
 }
 

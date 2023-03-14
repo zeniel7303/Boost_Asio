@@ -7,7 +7,7 @@ int Echo(CPacketHeader* _header, unsigned short _size, std::shared_ptr<CGameUser
 
 	auto sender = CSender::Alloc<CTestPacket>();
 	auto packet = sender->GetWritePointer<CTestPacket>();
-	packet->m_packetNum = 1;
+	packet->m_packetNum = TEST_PROTOCOL::TEST_ECHO;
 	strcpy(packet->m_test, echoPacket->m_test);
 
 	auto ptr = std::dynamic_pointer_cast<CTestUser>(_user);
@@ -23,7 +23,7 @@ int BigPacketTest(CPacketHeader* _header, unsigned short _size, std::shared_ptr<
 
 	auto sender = CSender::Alloc<CTestBigPacket>();
 	auto packet = sender->GetWritePointer<CTestBigPacket>();
-	packet->m_packetNum = 1;
+	packet->m_packetNum = TEST_PROTOCOL::TEST_BIGPACKET;
 	strcpy(packet->m_bigData, testBigPacket->m_bigData);
 
 	return _user->Send(sender);

@@ -9,6 +9,7 @@ static std::shared_ptr<CSender> CSender::Alloc()
 
 	if (shared == nullptr) return nullptr;
 
+	//전송할 패킷의 크기 가져오기
 	(reinterpret_cast<CPacketHeader*>(shared->m_tempChunk))->m_dataSize = size;
 
 	return shared;

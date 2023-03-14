@@ -7,7 +7,7 @@ int Echo(CPacketHeader* _header, unsigned short _size)
 
 	auto sender = CSender::Alloc<CTestPacket>();
 	auto packet = sender->GetWritePointer<CTestPacket>();
-	packet->m_packetNum = 1;
+	packet->m_packetNum = TEST_PROTOCOL::TEST_ECHO;
 	strcpy(packet->m_test, echoPacket->m_test);
 
 	return 0;
