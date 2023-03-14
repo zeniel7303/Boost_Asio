@@ -25,14 +25,14 @@
     <ClInclude Include="Stdafx.h">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="PacketList.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="CClientPacketHandler.h">
       <Filter>Handler</Filter>
     </ClInclude>
     <ClInclude Include="CTcpClient.h">
       <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="TestPacketList.h">
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

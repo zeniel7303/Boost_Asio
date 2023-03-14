@@ -22,9 +22,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PacketList.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Stdafx.h">
       <Filter>Headers</Filter>
     </ClInclude>
@@ -33,6 +30,9 @@
     </ClInclude>
     <ClInclude Include="CTestUser.h">
       <Filter>User</Filter>
+    </ClInclude>
+    <ClInclude Include="TestPacketList.h">
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

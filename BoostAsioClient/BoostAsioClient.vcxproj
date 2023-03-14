@@ -151,7 +151,7 @@
   <ItemGroup>
     <ClInclude Include="CClientPacketHandler.h" />
     <ClInclude Include="CTcpClient.h" />
-    <ClInclude Include="PacketList.h" />
+    <ClInclude Include="TestPacketList.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

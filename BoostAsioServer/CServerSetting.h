@@ -22,7 +22,6 @@ public:
 	CServerSetting();
 	~CServerSetting();
 
-	void AddAddress(char* _ip, unsigned short _port);
 	void AddAddress(unsigned short _port);
 	void SetSessionCount(int _size);
 

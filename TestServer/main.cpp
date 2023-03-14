@@ -8,6 +8,7 @@ int main()
     // Acceptor port 설정
     // AddAddress는 여러개 가능하다.
     setting.AddAddress(30001);
+    setting.AddAddress(30002);
 
     CTestServer testServer(&setting);
 

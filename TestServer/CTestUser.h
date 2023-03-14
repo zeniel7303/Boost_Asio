@@ -9,4 +9,6 @@ public:
 
 	void OnAccept() override;
 	void OnDisconnect() override;
+
+	void OnTest();
 };

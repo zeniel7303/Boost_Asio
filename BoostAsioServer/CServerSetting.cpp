@@ -10,11 +10,6 @@ CServerSetting::~CServerSetting()
 
 }
 
-void CServerSetting::AddAddress(char* _ip, unsigned short _port)
-{
-	m_acceptorAddressList.emplace_back(_ip, _port);
-}
-
 void CServerSetting::AddAddress(unsigned short _port)
 {
 	m_acceptorAddressList.emplace_back(nullptr, _port);

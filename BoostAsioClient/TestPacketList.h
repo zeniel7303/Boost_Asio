@@ -1,25 +1,5 @@
 #pragma once
 
-#pragma pack(push, 1)
-class CTestPacket : public CPacketHeader
-{
-public:
-	CTestPacket() = default;
-	~CTestPacket() = default;
-
-	char m_test[256];
-};
-
-class CTestBigPacket : public CPacketHeader
-{
-public:
-	CTestBigPacket() = default;
-	~CTestBigPacket() = default;
-
-	char m_bigData[2048];
-};
-#pragma pack(pop)
-
 int Echo(CPacketHeader* _header, unsigned short _size)
 {
 	auto echoPacket = reinterpret_cast<CTestPacket*>(_header);

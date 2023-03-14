@@ -182,6 +182,7 @@
     <ClInclude Include="CTcpSocket.h" />
     <ClInclude Include="ErrorDef.h" />
     <ClInclude Include="CEventHandler.h" />
+    <ClInclude Include="Protocol.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CAcceptor.Inl" />
@@ -190,7 +191,6 @@
     <None Include="CGameServer.Inl" />
     <None Include="CHandler.Inl" />
     <None Include="CIOContext.Inl" />
-    <None Include="ClassDiagram.cd" />
     <None Include="CObjectPool.Inl" />
     <None Include="CSender.Inl" />
     <None Include="CSession.Inl" />

@@ -10,14 +10,8 @@
     <Filter Include="Utility\Factory">
       <UniqueIdentifier>{dc912500-dd19-4d61-93ae-7fc684fb5b48}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utility\Factory\ObjectPool">
-      <UniqueIdentifier>{d20b3fb6-3b36-4717-8b99-4016578f2077}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utility\Lock">
       <UniqueIdentifier>{0df9b3e4-9a77-463b-9393-6ca9630467f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Server\Core">
-      <UniqueIdentifier>{10aaea70-0d67-4afa-a3f7-b34268404d97}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utility\Buffer">
       <UniqueIdentifier>{12433799-47f5-4833-b8db-dbea64796e51}</UniqueIdentifier>
@@ -49,11 +43,20 @@
     <Filter Include="Server\Network\Handler">
       <UniqueIdentifier>{675f54b2-7797-4bf9-a8a0-5bf9abd3e208}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Server\Core\Setting">
-      <UniqueIdentifier>{d3b33f8f-c4c7-4222-a3d9-bdf9e50f2fad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Server\Network\Socket\Socket_TCP">
       <UniqueIdentifier>{aeafdf29-e2a0-4c2a-9c14-2e4b2d470012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Network\Handler\Packet">
+      <UniqueIdentifier>{1fb3a691-f934-4e3e-b580-681c5c7fc5a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Network\Handler\Event">
+      <UniqueIdentifier>{bc22029c-e9a6-46af-be17-ee3a52db3b40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility\ObjectPool">
+      <UniqueIdentifier>{d20b3fb6-3b36-4717-8b99-4016578f2077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Server\Network\GameServer\Setting">
+      <UniqueIdentifier>{d3b33f8f-c4c7-4222-a3d9-bdf9e50f2fad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,20 +81,20 @@
     <ClCompile Include="CIOContext.cpp">
       <Filter>Server\Network\IO</Filter>
     </ClCompile>
-    <ClCompile Include="CPacketHandler.cpp">
-      <Filter>Server\Network\Handler</Filter>
-    </ClCompile>
     <ClCompile Include="CTcpSocket.cpp">
       <Filter>Server\Network\Socket\Socket_TCP</Filter>
     </ClCompile>
     <ClCompile Include="CServerSetting.cpp">
-      <Filter>Server\Core\Setting</Filter>
+      <Filter>Server\Network\GameServer\Setting</Filter>
     </ClCompile>
     <ClCompile Include="CRingBuffer.cpp">
       <Filter>Utility\Buffer</Filter>
     </ClCompile>
+    <ClCompile Include="CPacketHandler.cpp">
+      <Filter>Server\Network\Handler\Packet</Filter>
+    </ClCompile>
     <ClCompile Include="CEventHandler.cpp">
-      <Filter>Server\Core</Filter>
+      <Filter>Server\Network\Handler\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -111,7 +114,7 @@
       <Filter>Utility\Factory</Filter>
     </ClInclude>
     <ClInclude Include="CObjectPool.h">
-      <Filter>Utility\Factory\ObjectPool</Filter>
+      <Filter>Utility\ObjectPool</Filter>
     </ClInclude>
     <ClInclude Include="CSharedLock.h">
       <Filter>Utility\Lock</Filter>
@@ -122,26 +125,14 @@
     <ClInclude Include="CSendPool.h">
       <Filter>Server\Network\Session\Send</Filter>
     </ClInclude>
-    <ClInclude Include="CServer.h">
-      <Filter>Server\Core</Filter>
-    </ClInclude>
     <ClInclude Include="CIOContext.h">
       <Filter>Server\Network\IO</Filter>
     </ClInclude>
-    <ClInclude Include="CPacketHandler.h">
-      <Filter>Server\Network\Handler</Filter>
-    </ClInclude>
-    <ClInclude Include="CHandler.h">
-      <Filter>Server\Network\Handler</Filter>
-    </ClInclude>
     <ClInclude Include="CServerSetting.h">
-      <Filter>Server\Core\Setting</Filter>
+      <Filter>Server\Network\GameServer\Setting</Filter>
     </ClInclude>
     <ClInclude Include="CTcpSocket.h">
       <Filter>Server\Network\Socket\Socket_TCP</Filter>
-    </ClInclude>
-    <ClInclude Include="ErrorDef.h">
-      <Filter>Server\Core</Filter>
     </ClInclude>
     <ClInclude Include="CSpinLock.h">
       <Filter>Utility\Lock</Filter>
@@ -152,8 +143,23 @@
     <ClInclude Include="CRingBuffer.h">
       <Filter>Utility\Buffer</Filter>
     </ClInclude>
+    <ClInclude Include="CHandler.h">
+      <Filter>Server\Network\Handler\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="CPacketHandler.h">
+      <Filter>Server\Network\Handler\Packet</Filter>
+    </ClInclude>
     <ClInclude Include="CEventHandler.h">
-      <Filter>Server\Core</Filter>
+      <Filter>Server\Network\Handler\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol.h">
+      <Filter>Server\Network\Handler\Packet</Filter>
+    </ClInclude>
+    <ClInclude Include="CServer.h">
+      <Filter>Server\Network\GameServer</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorDef.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +176,7 @@
       <Filter>Server\Network\IO</Filter>
     </None>
     <None Include="CObjectPool.Inl">
-      <Filter>Utility\Factory\ObjectPool</Filter>
+      <Filter>Utility\ObjectPool</Filter>
     </None>
     <None Include="CFactory.Inl">
       <Filter>Utility\Factory</Filter>
@@ -178,15 +184,14 @@
     <None Include="CAcceptor.Inl">
       <Filter>Server\Network\Socket\Acceptor</Filter>
     </None>
-    <None Include="CHandler.Inl">
-      <Filter>Server\Network\Handler</Filter>
-    </None>
     <None Include="CTcpSocket.Inl">
       <Filter>Server\Network\Socket\Socket_TCP</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
     <None Include="CDoubleQueue.Inl">
       <Filter>Utility\Buffer</Filter>
+    </None>
+    <None Include="CHandler.Inl">
+      <Filter>Server\Network\Handler\Packet</Filter>
     </None>
   </ItemGroup>
 </Project>

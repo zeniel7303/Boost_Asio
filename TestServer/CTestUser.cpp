@@ -19,3 +19,8 @@ void CTestUser::OnDisconnect()
 {
 	printf("Disconnect \n");
 }
+
+void CTestUser::OnTest()
+{
+	printf("Test \n");
+}
