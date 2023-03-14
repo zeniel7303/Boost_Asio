@@ -107,6 +107,7 @@ int CSendPool::GetIndex(unsigned short _count)
 
 	for (const auto& flag : m_flag)
 	{
+		//false다 = 미사용 중
 		if (!flag)
 		{
 			++filledCount;

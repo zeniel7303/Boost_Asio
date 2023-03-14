@@ -19,7 +19,6 @@ void CObjectPool<T>::Init()
 {
 	assert(m_isAlloc == false && "Alloc Fail");
 
-	//WriteLock writeLock(*this);
 	std::unique_lock<CObjectPool<T>> writeLock(*this);
 
 	for (int i = 0; i < m_poolSize; ++i)
@@ -44,7 +43,6 @@ void CObjectPool<T>::Init()
 template<typename T>
 void CObjectPool<T>::Close()
 {
-	//WriteLock writeLock(*this);
 	std::unique_lock<CObjectPool<T>> writeLock(*this);
 
 	if (m_isAlloc == false) return;
@@ -74,7 +72,6 @@ T* CObjectPool<T>::NewObject()
 	T* object = nullptr;
 
 	{
-		//WriteLock writeLock(*this);
 		std::unique_lock<CObjectPool<T>> writeLock(*this);
 
 		if (m_usedSize >= GetMaxSize()) return object;
@@ -111,7 +108,6 @@ bool CObjectPool<T>::DeleteObject(T* _object)
 	}
 
 	{
-		//WriteLock writeLock(*this);
 		std::unique_lock<CObjectPool<T>> writeLock(*this);
 
 		// 해당 오브젝트에 대한 초기화는 어디서? or 해야하는가?
