@@ -1,5 +1,7 @@
 # Boost_Asio
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b10a6797d25c4de6820d9623af17db58)](https://app.codacy.com/gh/zeniel1230/Boost_Asio/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 #설명
 - BoostAsio를 활용해 만든 게임 서버 엔진입니다. 
 - 비동기로 작동하며 멀티쓰레드와 단일쓰레드용 브렌치가 존재합니다.
