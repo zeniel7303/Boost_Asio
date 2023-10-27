@@ -145,12 +145,12 @@ int CTcpClient::TestFunc(char* _pChar)
 {
 	/*auto sender = CSender::Alloc<CTestPacket>();
 	auto packet = sender->GetWritePointer<CTestPacket>();
-	packet->m_packetNum = 1;
+	packet->m_packetNum = 0;
 	strcpy(packet->m_test, _pChar);*/
 
 	auto sender = CSender::Alloc<CTestBigPacket>();
 	auto packet = sender->GetWritePointer<CTestBigPacket>();
-	packet->m_packetNum = 2;
+	packet->m_packetNum = 1;
 	strcpy(packet->m_bigData, _pChar);
 
 	return Send(sender);

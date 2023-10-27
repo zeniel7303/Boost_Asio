@@ -11,6 +11,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
+    <Filter Include="Packet">
+      <UniqueIdentifier>{80a712ed-b9bb-4d6c-ad37-e0656c7a049d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CTestServer.cpp">
@@ -20,6 +23,9 @@
       <Filter>User</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CServerPacketManager.cpp">
+      <Filter>Packet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PacketList.h">
@@ -33,6 +39,9 @@
     </ClInclude>
     <ClInclude Include="CTestUser.h">
       <Filter>User</Filter>
+    </ClInclude>
+    <ClInclude Include="CServerPacketManager.h">
+      <Filter>Packet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,8 @@
 #include "CGameServer.h"
 #include "CTestUser.h"
 
+#include "CServerPacketManager.h"
+
 class CTestServer : public CGameServer<CTestUser>
 {
 public:

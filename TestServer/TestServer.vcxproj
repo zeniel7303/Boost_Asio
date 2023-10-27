@@ -148,11 +148,13 @@
     <ClCompile Include="CTestServer.cpp" />
     <ClCompile Include="CTestUser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="CServerPacketManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTestServer.h" />
     <ClInclude Include="CTestUser.h" />
     <ClInclude Include="PacketList.h" />
+    <ClInclude Include="CServerPacketManager.h" />
     <ClInclude Include="Stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
